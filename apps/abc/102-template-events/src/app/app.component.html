@@ -7,7 +7,7 @@
   <p>Managers, don't forget to hold shift while clocking in!</p>
   <footer>
     <button (click)="clockIn($event)">Clock In</button>
-    <button (click)="clockOut()">Clock Out</button>
+    <button (click)="clockOut()" (pointerover)="readyToSubmit()">Clock Out</button>
   </footer>
 </article>
 

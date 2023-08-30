@@ -24,6 +24,10 @@ export class AppComponent {
     this.message = 'Have a nice day!';
   }
 
+  readyToSubmit() {
+    this.message = 'Ready to Submit?';
+  }
+
   showSchedule(day: string) {
     this.currentSchedule = scheduleMap[day];
   }
