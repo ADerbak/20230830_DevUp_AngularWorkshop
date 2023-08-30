@@ -1,0 +1,141 @@
+{
+  "name": "ngrx-102-ngrx-store-selectors",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "app",
+  "sourceRoot": "apps/ngrx/102-ngrx-store-selectors/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/ngrx/102-ngrx-store-selectors",
+        "index": "apps/ngrx/102-ngrx-store-selectors/src/index.html",
+        "main": "apps/ngrx/102-ngrx-store-selectors/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/ngrx/102-ngrx-store-selectors/tsconfig.app.json",
+        "assets": [
+          "apps/ngrx/102-ngrx-store-selectors/src/favicon.ico",
+          "apps/ngrx/102-ngrx-store-selectors/src/assets",
+          {
+            "glob": "**/*",
+            "input": "libs/shared/assets/ngrx",
+            "output": "/assets/"
+          },
+          {
+            "glob": "**/*",
+            "input": "libs/shared/assets/shared",
+            "output": "/assets/"
+          }
+        ],
+        "styles": [
+          "apps/ngrx/102-ngrx-store-selectors/src/styles.scss",
+          "libs/shared/styles/ngrx/shared.scss",
+          "libs/shared/styles/shared/shared.scss"
+        ],
+        "scripts": [],
+        "stylePreprocessorOptions": {
+          "includePaths": [
+            "libs/shared/styles/ngrx",
+            "libs/shared/styles/shared"
+          ]
+        }
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/ngrx/102-ngrx-store-selectors/src/environments/environment.ts",
+              "with": "apps/ngrx/102-ngrx-store-selectors/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "npx nx serve server",
+          "npx nx ng-serve ngrx-102-ngrx-store-selectors --output-style=stream-without-prefixes"
+        ]
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "ngrx-102-ngrx-store-selectors:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "apps/ngrx/102-ngrx-store-selectors/**/*.ts",
+          "apps/ngrx/102-ngrx-store-selectors/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/ngrx/102-ngrx-store-selectors/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "ngrx-102-ngrx-store-selectors:build",
+        "port": 4300
+      }
+    },
+    "ng-serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "options": {
+        "port": 4300,
+        "proxyConfig": "proxy.conf.json"
+      },
+      "configurations": {
+        "production": {
+          "browserTarget": "ngrx-102-ngrx-store-selectors:build:production"
+        },
+        "development": {
+          "browserTarget": "ngrx-102-ngrx-store-selectors:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+::ng-deep #router-container > * {
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+#router-container {
+  position: relative;
+}

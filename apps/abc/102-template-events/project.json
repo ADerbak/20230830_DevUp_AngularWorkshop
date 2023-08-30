@@ -1,0 +1,135 @@
+{
+  "name": "abc-102-template-events",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "app",
+  "sourceRoot": "apps/abc/102-template-events/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/abc/102-template-events",
+        "index": "apps/abc/102-template-events/src/index.html",
+        "main": "apps/abc/102-template-events/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/abc/102-template-events/tsconfig.app.json",
+        "assets": [
+          "apps/abc/102-template-events/src/favicon.ico",
+          "apps/abc/102-template-events/src/assets",
+          {
+            "glob": "**/*",
+            "input": "libs/shared/assets/abc",
+            "output": "/assets/"
+          },
+          {
+            "glob": "**/*",
+            "input": "libs/shared/assets/shared",
+            "output": "/assets/"
+          }
+        ],
+        "styles": [
+          "apps/abc/102-template-events/src/styles.scss",
+          "libs/shared/styles/abc/shared.scss",
+          "libs/shared/styles/shared/shared.scss"
+        ],
+        "scripts": [],
+        "stylePreprocessorOptions": {
+          "includePaths": [
+            "libs/shared/styles/abc",
+            "libs/shared/styles/shared"
+          ]
+        }
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "npx nx serve server",
+          "npx nx ng-serve abc-102-template-events --output-style=stream-without-prefixes"
+        ]
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "abc-102-template-events:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "apps/abc/102-template-events/**/*.ts",
+          "apps/abc/102-template-events/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/abc/102-template-events/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "abc-102-template-events:build",
+        "port": 4300
+      }
+    },
+    "ng-serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "options": {
+        "port": 4300,
+        "proxyConfig": "proxy.conf.json"
+      },
+      "configurations": {
+        "production": {
+          "browserTarget": "abc-102-template-events:build:production"
+        },
+        "development": {
+          "browserTarget": "abc-102-template-events:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    }
+  }
+}

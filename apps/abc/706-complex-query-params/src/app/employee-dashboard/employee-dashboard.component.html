@@ -1,0 +1,7 @@
+<app-employee-filter
+  [filterTerm]="(tableOptions | async)?.filter ?? undefined"
+></app-employee-filter>
+<app-employee-list
+  [employees]="(employees | async) ?? []"
+  [options]="(tableOptions | async) ?? undefined"
+></app-employee-list>

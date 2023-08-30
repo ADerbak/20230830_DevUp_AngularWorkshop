@@ -1,0 +1,21 @@
+<h3>Toppings</h3>
+
+<button (click)="addNewTopping()">Add Topping</button>
+
+<div *ngIf="!toppingControls.length">No Toppings Chosen...</div>
+
+<div
+  *ngFor="let topping of toppingControls; index as i"
+  class="topping"
+>
+  <label for="topping">Topping #{{ i + 1 }}:</label>
+
+  <input
+    id="topping"
+    type="text"
+    [formControl]="topping"
+    placeholder="Add a topping"
+  />
+
+  <button (click)="removeTopping(i)">x</button>
+</div>

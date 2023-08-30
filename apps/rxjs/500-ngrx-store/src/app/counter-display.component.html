@@ -1,0 +1,21 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      {{ label }}
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>Current total: {{ counter }}</mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="accent" (click)="pick.emit(1)">
+      Pick
+    </button>
+    <button
+      mat-raised-button
+      color="accent"
+      (click)="pick.emit(3)"
+      *ngIf="label === 'Apples'"
+    >
+      Pick 3
+    </button>
+  </mat-card-actions>
+</mat-card>

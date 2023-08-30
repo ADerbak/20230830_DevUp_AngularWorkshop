@@ -1,0 +1,135 @@
+{
+  "name": "abc-703-custom-validators",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "app",
+  "sourceRoot": "apps/abc/703-custom-validators/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/abc/703-custom-validators",
+        "index": "apps/abc/703-custom-validators/src/index.html",
+        "main": "apps/abc/703-custom-validators/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/abc/703-custom-validators/tsconfig.app.json",
+        "assets": [
+          "apps/abc/703-custom-validators/src/favicon.ico",
+          "apps/abc/703-custom-validators/src/assets",
+          {
+            "glob": "**/*",
+            "input": "libs/shared/assets/abc",
+            "output": "/assets/"
+          },
+          {
+            "glob": "**/*",
+            "input": "libs/shared/assets/shared",
+            "output": "/assets/"
+          }
+        ],
+        "styles": [
+          "apps/abc/703-custom-validators/src/styles.scss",
+          "libs/shared/styles/abc/shared.scss",
+          "libs/shared/styles/shared/shared.scss"
+        ],
+        "scripts": [],
+        "stylePreprocessorOptions": {
+          "includePaths": [
+            "libs/shared/styles/abc",
+            "libs/shared/styles/shared"
+          ]
+        }
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "npx nx serve server",
+          "npx nx ng-serve abc-703-custom-validators --output-style=stream-without-prefixes"
+        ]
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "abc-703-custom-validators:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "apps/abc/703-custom-validators/**/*.ts",
+          "apps/abc/703-custom-validators/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/abc/703-custom-validators/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "abc-703-custom-validators:build",
+        "port": 4300
+      }
+    },
+    "ng-serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "options": {
+        "port": 4300,
+        "proxyConfig": "proxy.conf.json"
+      },
+      "configurations": {
+        "production": {
+          "browserTarget": "abc-703-custom-validators:build:production"
+        },
+        "development": {
+          "browserTarget": "abc-703-custom-validators:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    }
+  }
+}

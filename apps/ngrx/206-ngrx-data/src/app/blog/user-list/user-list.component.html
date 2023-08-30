@@ -1,0 +1,10 @@
+<h1>Select a User</h1>
+<mat-nav-list *ngIf="users$ | async as users">
+  <a
+    mat-list-item
+    [routerLink]="[user.id]"
+    *ngFor="let user of users"
+  >
+    {{ user.name }}
+  </a>
+</mat-nav-list>

@@ -1,0 +1,8 @@
+<article>
+  <header>Select Employee</header>
+  <p *ngFor="let employee of employees">
+    <a (click)="selectedEmployee.emit(employee.id)">
+      {{ employee.firstName }} {{ employee.lastName }}
+    </a>
+  </p>
+</article>

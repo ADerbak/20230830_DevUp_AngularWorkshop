@@ -1,0 +1,24 @@
+<span class="filter-label">Region</span>
+<span class="chip">{{ filterForm.controls.region.value }}</span>
+
+<span class="filter-label">Date Range</span>
+<span class="chip">
+  {{ filterForm.controls.dateFrom.value | date : 'shortDate' }}
+</span>
+<span class="chip">
+  {{ filterForm.controls.dateTo.value | date : 'shortDate' }}
+</span>
+
+<span class="filter-label">Age Groups</span>
+<span *ngIf="filterForm.controls.minor.value" class="chip">
+  Minors
+</span>
+<span *ngIf="filterForm.controls.adults.value" class="chip">
+  Adults
+</span>
+<span *ngIf="filterForm.controls.middleAged.value" class="chip">
+  Middle Aged
+</span>
+<span *ngIf="filterForm.controls.retired.value" class="chip">
+  Retired
+</span>

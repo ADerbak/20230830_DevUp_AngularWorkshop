@@ -1,0 +1,11 @@
+:host {
+  max-height: 400px;
+  display: block;
+  overflow-y: auto;
+}
+
+th {
+  position: sticky;
+  top: 0;
+  background-color: white;
+}

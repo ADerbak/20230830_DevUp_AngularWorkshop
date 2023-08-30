@@ -1,0 +1,9 @@
+<article>
+  <header>Top 5 employees</header>
+  <p *ngIf="loading">Loading...</p>
+  <ul>
+    <li *ngFor="let e of employees">
+      {{ e.firstName }} {{ e.lastName }}
+    </li>
+  </ul>
+</article>

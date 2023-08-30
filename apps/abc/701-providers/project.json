@@ -1,0 +1,135 @@
+{
+  "name": "abc-701-providers",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "app",
+  "sourceRoot": "apps/abc/701-providers/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/abc/701-providers",
+        "index": "apps/abc/701-providers/src/index.html",
+        "main": "apps/abc/701-providers/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/abc/701-providers/tsconfig.app.json",
+        "assets": [
+          "apps/abc/701-providers/src/favicon.ico",
+          "apps/abc/701-providers/src/assets",
+          {
+            "glob": "**/*",
+            "input": "libs/shared/assets/abc",
+            "output": "/assets/"
+          },
+          {
+            "glob": "**/*",
+            "input": "libs/shared/assets/shared",
+            "output": "/assets/"
+          }
+        ],
+        "styles": [
+          "apps/abc/701-providers/src/styles.scss",
+          "libs/shared/styles/abc/shared.scss",
+          "libs/shared/styles/shared/shared.scss"
+        ],
+        "scripts": [],
+        "stylePreprocessorOptions": {
+          "includePaths": [
+            "libs/shared/styles/abc",
+            "libs/shared/styles/shared"
+          ]
+        }
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "npx nx serve server",
+          "npx nx ng-serve abc-701-providers --output-style=stream-without-prefixes"
+        ]
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "abc-701-providers:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "apps/abc/701-providers/**/*.ts",
+          "apps/abc/701-providers/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/abc/701-providers/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "abc-701-providers:build",
+        "port": 4300
+      }
+    },
+    "ng-serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "options": {
+        "port": 4300,
+        "proxyConfig": "proxy.conf.json"
+      },
+      "configurations": {
+        "production": {
+          "browserTarget": "abc-701-providers:build:production"
+        },
+        "development": {
+          "browserTarget": "abc-701-providers:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+@use 'layout';
+
+.todo-lists {
+  @include layout.two-across;
+}
+
+.todo-list {
+  height: 5rem;
+  overflow-y: auto;
+
+  li {
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,22 @@
+<oasis-header
+  title="Push Notifications"
+  [documents]="[
+    {
+      label: 'Angular PWA Documentation',
+      url: 'https://angular.io/guide/service-worker-getting-started'
+    }
+  ]"
+></oasis-header>
+
+<div class="page-layout">
+  <section>
+    <p>Want to be notified when new courses are available?</p>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="registerForNotifications()"
+    >
+      Click here
+    </button>
+  </section>
+</div>

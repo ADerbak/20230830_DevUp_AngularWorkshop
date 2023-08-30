@@ -1,0 +1,10 @@
+<article>
+  <header>{{ label }}</header>
+  Current total: {{ counter }}
+  <footer>
+    <button (click)="pick.emit(1)">Pick</button>
+    <button (click)="pick.emit(3)" *ngIf="label === 'Apples'">
+      Pick 3
+    </button>
+  </footer>
+</article>

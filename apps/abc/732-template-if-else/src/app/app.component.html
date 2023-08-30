@@ -1,0 +1,15 @@
+<article>
+  <header>
+    <code>*ngIf</code>
+    then else
+  </header>
+
+  <button (click)="increment()">Add One</button>
+
+  <p>
+    <ng-container *ngIf="n % 2; else evenmarker">
+      {{ n }} is odd.
+    </ng-container>
+    <ng-template #evenmarker>{{ n }} is even.</ng-template>
+  </p>
+</article>

@@ -1,0 +1,10 @@
+<mat-selection-list class="mat-elevation-z2">
+  <mat-list-option
+    (click)="setStat(task)"
+    [selected]="selected"
+    checkboxPosition="before"
+    *ngFor="let task of list"
+  >
+    {{ task }}
+  </mat-list-option>
+</mat-selection-list>

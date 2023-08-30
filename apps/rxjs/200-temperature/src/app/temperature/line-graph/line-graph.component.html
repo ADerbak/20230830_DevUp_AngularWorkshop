@@ -1,0 +1,29 @@
+<svg
+  [attr.width]="width"
+  [attr.height]="height"
+  style="border: 1px solid black"
+>
+  <line
+    x1="0"
+    [attr.y1]="height / 2"
+    [attr.x2]="width"
+    [attr.y2]="height / 2"
+    style="stroke: black; stroke-width: 1"
+  ></line>
+  <circle
+    *ngFor="let point of points; index as i"
+    [attr.cx]="i * intervalSpacing"
+    [attr.cy]="point + height / 2"
+    stroke="black"
+    r="2"
+    fill="black"
+  ></circle>
+  <line
+    *ngFor="let line of lines; index as i"
+    [attr.x1]="i * intervalSpacing"
+    [attr.y1]="line.start + height / 2"
+    [attr.x2]="(i + 1) * intervalSpacing"
+    [attr.y2]="line.end + height / 2"
+    style="stroke: black; stroke-width: 1"
+  ></line>
+</svg>

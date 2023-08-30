@@ -1,0 +1,39 @@
+<button (click)="addTodo()">Add Todo</button>
+
+<div class="todo-lists">
+  <article>
+    <header>Mutable inputs with Default CDS (inefficient)</header>
+    <app-todo-list-default-strategy
+      [todoItems]="ids.itemList1"
+      (toggleItem)="ids.toggleItem($event)"
+    ></app-todo-list-default-strategy>
+  </article>
+
+  <article>
+    <header>Immutable inputs with Default CDS (inefficient)</header>
+    <app-todo-list-default-strategy
+      [todoItems]="ids.itemList2"
+      (toggleItem)="ids.toggleItem($event)"
+    ></app-todo-list-default-strategy>
+  </article>
+
+  <article>
+    <header>
+      Mutable inputs with OnPush CDS (potentially broken)
+    </header>
+    <app-todo-list-onpush-strategy
+      [todoItems]="ids.itemList1"
+      (toggleItem)="ids.toggleItem($event)"
+    ></app-todo-list-onpush-strategy>
+  </article>
+
+  <article>
+    <header>
+      Immutable inputs with OnPush CDS (most performant)
+    </header>
+    <app-todo-list-onpush-strategy
+      [todoItems]="ids.itemList2"
+      (toggleItem)="ids.toggleItem($event)"
+    ></app-todo-list-onpush-strategy>
+  </article>
+</div>

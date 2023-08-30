@@ -1,0 +1,54 @@
+<div mat-dialog-content>
+  <form [formGroup]="shotForm">
+    <mat-form-field>
+      <mat-label>Shot Taker</mat-label>
+      <mat-select [formControl]="shotForm.controls.player">
+        <mat-option
+          *ngFor="let player of this.game.players"
+          [value]="player.id"
+        >
+          {{ player.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Assist</mat-label>
+      <mat-select [formControl]="shotForm.controls.assist">
+        <mat-option
+          *ngFor="let player of this.game.players"
+          [value]="player.id"
+        >
+          {{ player.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        type="number"
+        matInput
+        placeholder="Time"
+        [formControl]="shotForm.controls.minute"
+      />
+    </mat-form-field>
+    <mat-checkbox [formControl]="shotForm.controls.scored">
+      Scored
+    </mat-checkbox>
+    <span
+      *ngIf="
+        shotForm.touched && shotForm.getError('cantAssistYourself')
+      "
+    >
+      A player can not assist themselves
+    </span>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button
+    mat-button
+    (click)="save()"
+    [disabled]="saving || shotForm.invalid"
+  >
+    Add
+  </button>
+  <mat-spinner *ngIf="saving" diameter="20"></mat-spinner>
+</div>

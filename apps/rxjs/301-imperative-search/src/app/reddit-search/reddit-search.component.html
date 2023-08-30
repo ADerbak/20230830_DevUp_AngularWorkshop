@@ -1,0 +1,34 @@
+<form>
+  <mat-form-field>
+    <mat-label>Search reddit.com/r/</mat-label>
+    <mat-select
+      id="subReddit"
+      [(ngModel)]="subReddit"
+      [ngModelOptions]="{ standalone: true }"
+      (ngModelChange)="findResults()"
+    >
+      <mat-option *ngFor="let sr of subReddits" [value]="sr">
+        {{ sr }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>for images containing</mat-label>
+    <input
+      id="search"
+      type="text"
+      matInput
+      [(ngModel)]="search"
+      [ngModelOptions]="{ standalone: true }"
+      (ngModelChange)="findResults()"
+    />
+  </mat-form-field>
+</form>
+
+<section>
+  <img
+    *ngFor="let post of results"
+    [src]="post.thumbnail"
+    [alt]="post.title"
+  />
+</section>

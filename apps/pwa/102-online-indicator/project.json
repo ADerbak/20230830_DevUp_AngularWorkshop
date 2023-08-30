@@ -1,0 +1,141 @@
+{
+  "name": "pwa-102-online-indicator",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "app",
+  "sourceRoot": "apps/pwa/102-online-indicator/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/pwa/102-online-indicator",
+        "index": "apps/pwa/102-online-indicator/src/index.html",
+        "main": "apps/pwa/102-online-indicator/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/pwa/102-online-indicator/tsconfig.app.json",
+        "assets": [
+          "apps/pwa/102-online-indicator/src/favicon.ico",
+          "apps/pwa/102-online-indicator/src/assets",
+          {
+            "glob": "**/*",
+            "input": "libs/shared/assets/pwa",
+            "output": "/assets/"
+          },
+          {
+            "glob": "**/*",
+            "input": "libs/shared/assets/shared",
+            "output": "/assets/"
+          }
+        ],
+        "styles": [
+          "apps/pwa/102-online-indicator/src/styles.scss",
+          "libs/shared/styles/pwa/shared.scss",
+          "libs/shared/styles/shared/shared.scss"
+        ],
+        "scripts": [],
+        "stylePreprocessorOptions": {
+          "includePaths": [
+            "libs/shared/styles/pwa",
+            "libs/shared/styles/shared"
+          ]
+        }
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/pwa/102-online-indicator/src/environments/environment.ts",
+              "with": "apps/pwa/102-online-indicator/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "npx nx serve server",
+          "npx nx ng-serve pwa-102-online-indicator --output-style=stream-without-prefixes"
+        ]
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "pwa-102-online-indicator:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "apps/pwa/102-online-indicator/**/*.ts",
+          "apps/pwa/102-online-indicator/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/pwa/102-online-indicator/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "pwa-102-online-indicator:build",
+        "port": 4300
+      }
+    },
+    "ng-serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "options": {
+        "port": 4300,
+        "proxyConfig": "proxy.conf.json"
+      },
+      "configurations": {
+        "production": {
+          "browserTarget": "pwa-102-online-indicator:build:production"
+        },
+        "development": {
+          "browserTarget": "pwa-102-online-indicator:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    }
+  }
+}

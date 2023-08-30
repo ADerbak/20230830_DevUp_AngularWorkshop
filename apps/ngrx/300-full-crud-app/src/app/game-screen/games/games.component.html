@@ -1,0 +1,24 @@
+<span class="grid">
+  <span class="game-list">
+    <mat-card>
+      <mat-card-content>
+        <mat-nav-list>
+          <a
+            mat-list-item
+            *ngFor="let game of games | async"
+            [routerLink]="game.id"
+            routerLinkActive="mat-list-item-active"
+          >
+            {{ game.name }}
+          </a>
+        </mat-nav-list>
+        <button style="float: right" mat-mini-fab (click)="addGame()">
+          <mat-icon>add</mat-icon>
+        </button>
+      </mat-card-content>
+    </mat-card>
+  </span>
+  <mat-card class="game-detail">
+    <router-outlet></router-outlet>
+  </mat-card>
+</span>

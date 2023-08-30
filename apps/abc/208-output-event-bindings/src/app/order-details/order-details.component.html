@@ -1,0 +1,6 @@
+<div *ngIf="!sod">Please select order to view details</div>
+<div *ngIf="sod">
+  <header>Details</header>
+  <app-order-header [customerName]="sod.customer"></app-order-header>
+  <app-order-items [items]="sod.items"></app-order-items>
+</div>

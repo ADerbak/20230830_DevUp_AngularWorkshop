@@ -1,0 +1,22 @@
+@use 'layout';
+
+.form-fields {
+  @include layout.three-across;
+}
+
+input.invalid {
+  background-color: pink;
+}
+
+.email-input.ng-touched.ng-invalid {
+  animation: ohnoes 0.3s ease infinite alternate;
+}
+
+@keyframes ohnoes {
+  from {
+    box-shadow: none;
+  }
+  to {
+    box-shadow: 0 0 30px 30px red;
+  }
+}

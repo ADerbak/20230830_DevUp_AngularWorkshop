@@ -1,0 +1,8 @@
+<article>
+  <header>Expensive Component That Doesn't Need Updating</header>
+  <div *ngFor="let row of rows">
+    <span *ngFor="let cell of row">
+      {{ cell.total | number : '1.3-3' }},
+    </span>
+  </div>
+</article>

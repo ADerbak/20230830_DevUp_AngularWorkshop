@@ -1,0 +1,26 @@
+<oasis-header
+  title="Camera API"
+  [documents]="[
+    {
+      label: 'Angular PWA Documentation',
+      url: 'https://angular.io/guide/service-worker-getting-started'
+    }
+  ]"
+></oasis-header>
+
+<div class="page-layout">
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="filePicker.click()"
+  >
+    Take a picture
+  </button>
+  <input
+    style="display: none"
+    #filePicker
+    type="file"
+    accept="image/*"
+    (change)="selectFile($event)"
+  />
+</div>

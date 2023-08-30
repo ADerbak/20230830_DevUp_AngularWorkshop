@@ -1,0 +1,18 @@
+form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2em;
+}
+
+app-form-toppings {
+  grid-column-start: 1;
+  grid-column-end: -1;
+}
+
+.collapsed {
+  display: none;
+}
+
+.material-icons {
+  vertical-align: baseline;
+}

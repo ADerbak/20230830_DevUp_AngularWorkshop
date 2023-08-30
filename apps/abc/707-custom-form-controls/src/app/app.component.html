@@ -1,0 +1,10 @@
+<form>
+  <app-us-states-selector
+    [formControl]="usStateSelector"
+  ></app-us-states-selector>
+</form>
+
+<article>
+  <header>Form Control Value</header>
+  <pre>{{ usStateSelector.value | json }}</pre>
+</article>

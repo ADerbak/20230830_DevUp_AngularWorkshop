@@ -1,0 +1,30 @@
+<table role="grid">
+  <thead>
+    <tr>
+      <td *ngFor="let header of headers">
+        <app-employee-list-header
+          [propertyName]="header.propertyName"
+          [display]="header.display"
+          [options]="options"
+          (clicked)="headerClicked($event)"
+        ></app-employee-list-header>
+      </td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let employee of employees">
+      <td>
+        <a routerLink [queryParams]="{ filter: employee.firstName }">
+          {{ employee.firstName }}
+        </a>
+      </td>
+      <td>
+        <a routerLink [queryParams]="{ filter: employee.lastName }">
+          {{ employee.lastName }}
+        </a>
+      </td>
+      <td>{{ employee.hoursWorked }}</td>
+      <td>{{ employee.hourlyWage }}</td>
+    </tr>
+  </tbody>
+</table>

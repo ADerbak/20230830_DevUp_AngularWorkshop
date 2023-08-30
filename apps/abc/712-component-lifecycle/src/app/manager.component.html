@@ -1,0 +1,38 @@
+<article>
+  <header>Interact with these controls with the console open</header>
+
+  <form [formGroup]="testGroup">
+    <label for="check">
+      <input
+        type="checkbox"
+        id="check"
+        [formControl]="testGroup.controls.showing"
+      />
+      Show Workers
+    </label>
+
+    <label for="testVal">
+      testVal
+      <input
+        id="testVal"
+        [formControl]="testGroup.controls.testVal"
+      />
+    </label>
+
+    <label>
+      testVal2
+      <input [formControl]="testGroup.controls.testVal2" />
+    </label>
+
+    <label>
+      testVal3
+      <input [formControl]="testGroup.controls.testVal3" />
+    </label>
+  </form>
+</article>
+
+<app-worker-cmp
+  [label]="testGroup.controls.testVal.value"
+  [label2]="testGroup.controls.testVal2.value"
+  *ngIf="testGroup.controls.showing.value"
+></app-worker-cmp>

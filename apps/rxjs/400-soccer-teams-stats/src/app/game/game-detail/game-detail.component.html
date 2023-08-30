@@ -1,0 +1,37 @@
+<ng-container *ngIf="gameDetails | async as game">
+  <div class="game-title">
+    <h1 e2e="game-details-name">
+      {{ game.name }} - {{ game.location }} - {{ game.date | date }}
+    </h1>
+    <div>
+      <button
+        mat-raised-button
+        color="warn"
+        (click)="delete()"
+        e2e="delete-game"
+      >
+        Delete
+        <mat-icon>delete</mat-icon>
+      </button>
+      <mat-spinner *ngIf="deleting" diameter="20"></mat-spinner>
+    </div>
+  </div>
+
+  <app-player-list
+    [players]="game.playerDetails"
+    [playersNotInGame]="(playersNotInGame | async) ?? []"
+    [gameId]="game.id"
+  ></app-player-list>
+
+  <app-shot-list
+    [shots]="game.shots"
+    [gameId]="game.id"
+    [players]="game.playerDetails"
+  ></app-shot-list>
+
+  <app-card-list
+    [cards]="game.cards"
+    [gameId]="game.id"
+    [players]="game.playerDetails"
+  ></app-card-list>
+</ng-container>

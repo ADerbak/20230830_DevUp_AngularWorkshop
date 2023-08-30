@@ -1,0 +1,15 @@
+<article>
+  <header>Employee Processing Status: {{ status }}</header>
+  <ng-container *ngIf="employees | async as containerEmployees">
+    <ul @listArrival class="collection">
+      <li
+        *ngFor="let e of containerEmployees"
+        [@changeStatus]="status"
+      >
+        {{ e.firstName }} {{ e.lastName }}
+      </li>
+    </ul>
+  </ng-container>
+</article>
+
+<button (click)="statusChange()">Change Processing Status</button>

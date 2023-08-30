@@ -1,0 +1,8 @@
+<article>
+  <header>Employee Details</header>
+  <app-employee-details
+    [employee]="(employee | async) ?? undefined"
+  ></app-employee-details>
+  <hr />
+  <a routerLink="/employees">Back to list</a>
+</article>

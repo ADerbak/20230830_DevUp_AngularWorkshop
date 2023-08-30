@@ -1,0 +1,5 @@
+@use 'layout';
+
+.results {
+  @include layout.two-across;
+}

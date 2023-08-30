@@ -1,0 +1,47 @@
+<form [formGroup]="sizeAndSpeed">
+  <div>
+    <div class="label-wrapper">
+      <span class="material-icons">format_size</span>
+      <label>Text Size: {{ sizeAndSpeed.value.size }}px</label>
+    </div>
+    <div class="range-field">
+      <span class="range-label">12px</span>
+      <input
+        type="range"
+        [formControl]="sizeAndSpeed.controls.size"
+        min="12"
+        max="35"
+      />
+      <span class="range-label">35px</span>
+    </div>
+  </div>
+  <div>
+    <div class="label-wrapper">
+      <span class="material-icons">timer</span>
+      <label>
+        Animation Speed: {{ sizeAndSpeed.value.animationSpeed }}ms
+      </label>
+    </div>
+    <div class="range-field">
+      <span class="range-label">250ms</span>
+      <input
+        type="range"
+        [formControl]="sizeAndSpeed.controls.animationSpeed"
+        min="250"
+        max="2000"
+      />
+      <span class="range-label">2000ms</span>
+    </div>
+  </div>
+</form>
+
+<div
+  class="sample-text"
+  [style.font-size.px]="sizeAndSpeed.value.size"
+  [@shrinkTextOnUpdate]="{
+    value: sizeAndSpeed.value,
+    params: sizeAndSpeed.value
+  }"
+>
+  The quick brown fox jumps over the lazy dog
+</div>

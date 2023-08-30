@@ -1,0 +1,73 @@
+.employee-name.bonus::after {
+  font-family: 'Material Icons';
+  font-weight: 400;
+  content: 'attach_money';
+}
+
+.employee-name.fired::after {
+  font-family: 'Material Icons';
+  font-weight: 400;
+  content: 'not_interested';
+}
+
+.bar.bonus {
+  background-color: green;
+}
+
+.bar.fired {
+  background-color: red;
+}
+
+.bar {
+  height: 10px;
+  background-color: #2f49cb;
+  border-radius: 2px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.stripe {
+  background-color: gainsboro;
+}
+
+.region-label {
+  font-weight: normal;
+}
+
+.region-Eastern {
+  background-color: #4ac4e2;
+}
+
+.region-Central {
+  background-color: #d07382;
+}
+
+.region-Western {
+  background-color: #f4ef6a;
+}
+
+.employee-name {
+  font-weight: bold;
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+}
+
+table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+th,
+td {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.employee-column {
+  width: 25%;
+}
+
+.units-column,
+.revenue-column {
+  width: 37.5%;
+}

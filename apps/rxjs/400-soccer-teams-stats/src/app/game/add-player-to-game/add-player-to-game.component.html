@@ -1,0 +1,24 @@
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Choose player</mat-label>
+    <select matNativeControl [formControl]="chosenPlayer">
+      <option
+        *ngFor="let player of playerOptions"
+        [value]="player.id"
+      >
+        {{ player.name }}
+      </option>
+    </select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button
+    mat-button
+    (click)="save()"
+    [disabled]="saving || chosenPlayer.invalid"
+    e2e="submit-game-player"
+  >
+    Add player
+  </button>
+  <mat-spinner *ngIf="saving" diameter="20"></mat-spinner>
+</div>

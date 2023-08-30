@@ -1,0 +1,14 @@
+<article>
+  <header>Employees</header>
+
+  <app-employee-filter></app-employee-filter>
+
+  <app-employee-list
+    [list]="(filteredList | async) ?? []"
+    [selectedId]="(selectedEmployee | async)?.id"
+  ></app-employee-list>
+</article>
+
+<app-employee-detail-view
+  [employee]="(selectedEmployee | async) ?? undefined"
+></app-employee-detail-view>

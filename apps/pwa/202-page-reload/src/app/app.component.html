@@ -1,0 +1,27 @@
+<oasis-header
+  title="Page Reload"
+  [documents]="[
+    {
+      label: 'Angular PWA Documentation',
+      url: 'https://angular.io/guide/service-worker-getting-started'
+    }
+  ]"
+></oasis-header>
+
+<div class="page-layout"></div>
+<p>Wait for it...</p>
+<footer>
+  <ng-container *ngIf="!updateDenied && (updateAvailable | async)">
+    A new version is available. Reload to update.
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="activateUpdate()"
+    >
+      Reload
+    </button>
+    <button mat-raised-button (click)="clearUpdateMessage()">
+      Not now
+    </button>
+  </ng-container>
+</footer>

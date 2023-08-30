@@ -1,0 +1,8 @@
+<ul class="collection todo-list">
+  <li *ngFor="let todo of todoItems; index as i">
+    <app-item-detail
+      [item]="todo"
+      (toggle)="toggleItem.emit(i)"
+    ></app-item-detail>
+  </li>
+</ul>

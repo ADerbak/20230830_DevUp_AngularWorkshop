@@ -1,0 +1,13 @@
+<div>
+  <label for="state">State:</label>
+
+  <select
+    id="state"
+    [formControl]="selectedState"
+    (blur)="onTouched && onTouched()"
+  >
+    <option [ngValue]="state" *ngFor="let state of usStates">
+      {{ state.State }}
+    </option>
+  </select>
+</div>

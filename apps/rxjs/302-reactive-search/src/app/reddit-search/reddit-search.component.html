@@ -1,0 +1,23 @@
+<section class="form">
+  <mat-form-field>
+    <mat-label>Search reddit.com/r/</mat-label>
+    <mat-select id="subReddit" [formControl]="subReddit">
+      <mat-option *ngFor="let sr of subReddits" [value]="sr">
+        {{ sr }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>for images containing</mat-label>
+    <input id="search" type="text" matInput [formControl]="search" />
+  </mat-form-field>
+</section>
+
+<section class="images">
+  <img
+    *ngFor="let post of results | async"
+    e2e="reddit-image"
+    [src]="post.thumbnail"
+    [alt]="post.title"
+  />
+</section>

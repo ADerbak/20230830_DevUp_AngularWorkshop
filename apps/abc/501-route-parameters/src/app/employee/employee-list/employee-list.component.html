@@ -1,0 +1,8 @@
+<article>
+  <header>Select Employee</header>
+  <p *ngFor="let employee of list | async">
+    <a [routerLink]="[employee.id]">
+      {{ employee.firstName }} {{ employee.lastName }}
+    </a>
+  </p>
+</article>

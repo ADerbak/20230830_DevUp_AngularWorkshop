@@ -1,0 +1,48 @@
+<div class="etch-controls">
+  <div>
+    <div class="label-wrapper">
+      <span class="material-icons">height</span>
+      <label>Etch Depth: {{ etchDepth.value }}&mu;m</label>
+    </div>
+    <div class="range-field">
+      <span class="range-label">20&mu;m</span>
+      <input
+        type="range"
+        [formControl]="etchDepth"
+        min="20"
+        max="200"
+      />
+      <span class="range-label">200&mu;m</span>
+    </div>
+  </div>
+  <div>
+    <div class="label-wrapper">
+      <span class="material-icons">timer</span>
+      <label>Etch Speed</label>
+    </div>
+    <div class="range-field">
+      <span class="range-label">
+        <span class="material-icons">fast_rewind</span>
+      </span>
+      <input type="range" [formControl]="etchTime" min="1" max="5" />
+      <span class="range-label">
+        <span class="material-icons">fast_forward</span>
+      </span>
+    </div>
+  </div>
+</div>
+<!-- As of 7/20, animation looping is not supported by Angular https://github.com/angular/angular/issues/20621  -->
+<div class="simulator">
+  <div
+    class="etcher"
+    [style.height.px]="etchDepth.value"
+    [@updateSimulation]="{
+      value: etchDepth.value + etchTime.value,
+      params: {
+        etchDepth: etchDepth.value,
+        etchTime: 5 - etchTime.value
+      }
+    }"
+  ></div>
+  <div class="wafer"></div>
+</div>

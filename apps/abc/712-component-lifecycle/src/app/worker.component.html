@@ -1,0 +1,11 @@
+<article>
+  <header>Worker List: {{ workerList.length }}</header>
+
+  <ul>
+    <li *ngFor="let w of workerList">
+      {{ w.firstName }}
+    </li>
+  </ul>
+
+  {{ label }}
+</article>

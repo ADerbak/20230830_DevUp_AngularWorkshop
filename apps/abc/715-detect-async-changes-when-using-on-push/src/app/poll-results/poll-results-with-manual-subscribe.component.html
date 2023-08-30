@@ -1,0 +1,8 @@
+<article>
+  <header>What's Your Favorite Donut?</header>
+  <ul>
+    <li *ngFor="let pollResult of pollResults">
+      {{ pollResult.name }}: {{ pollResult.votes }}
+    </li>
+  </ul>
+</article>

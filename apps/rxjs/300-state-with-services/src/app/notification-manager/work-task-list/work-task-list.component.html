@@ -1,0 +1,25 @@
+<h2>Work</h2>
+
+<mat-selection-list class="mat-elevation-z2">
+  <h3 matSubheader>Completed</h3>
+  <mat-list-option
+    (click)="workTask(task, true)"
+    selected="true"
+    checkboxPosition="before"
+    *ngFor="let task of done | async"
+  >
+    {{ task }}
+  </mat-list-option>
+</mat-selection-list>
+
+<mat-selection-list class="mat-elevation-z2">
+  <h3 matSubheader>In-Progress</h3>
+  <mat-list-option
+    (click)="workTask(task, false)"
+    selected="false"
+    checkboxPosition="before"
+    *ngFor="let task of todo | async"
+  >
+    {{ task }}
+  </mat-list-option>
+</mat-selection-list>

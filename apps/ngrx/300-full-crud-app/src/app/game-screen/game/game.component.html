@@ -1,0 +1,41 @@
+<span *ngIf="game | async as g">
+  <mat-card-title>
+    {{ g.name }} - {{ g.location }} - {{ g.date | date }}
+    <div class="delete-control">
+      <button mat-raised-button color="warn" (click)="delete()">
+        Delete
+        <mat-icon>delete</mat-icon>
+      </button>
+      <mat-spinner *ngIf="deleting" diameter="20"></mat-spinner>
+    </div>
+  </mat-card-title>
+  <mat-card class="players">
+    <mat-card-title>Players</mat-card-title>
+    <mat-card-content>
+      <app-player-list
+        [players]="g.playerDetails"
+        [gameId]="g.id"
+      ></app-player-list>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="shots">
+    <mat-card-title>Shots Taken</mat-card-title>
+    <mat-card-content>
+      <app-shot-list
+        [shots]="g.shots"
+        [gameId]="g.id"
+        [players]="g.playerDetails"
+      ></app-shot-list>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="cards">
+    <mat-card-title>Cards Given</mat-card-title>
+    <mat-card-content>
+      <app-card-list
+        [cards]="g.cards"
+        [gameId]="g.id"
+        [players]="g.playerDetails"
+      ></app-card-list>
+    </mat-card-content>
+  </mat-card>
+</span>

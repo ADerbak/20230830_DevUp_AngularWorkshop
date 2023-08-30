@@ -1,0 +1,17 @@
+<a
+  (click)="startEditingName()"
+  *ngIf="editing === false"
+  style="cursor: pointer"
+>
+  {{ playerNameEdit.value }}
+</a>
+<span *ngIf="editing === true">
+  <mat-form-field>
+    <input
+      matInput
+      type="text"
+      [formControl]="playerNameEdit"
+      (blur)="save()"
+    />
+  </mat-form-field>
+</span>

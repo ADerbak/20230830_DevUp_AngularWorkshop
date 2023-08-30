@@ -1,0 +1,52 @@
+<article>
+  <header>Financial Report</header>
+  <table>
+    <thead>
+      <tr>
+        <th class="employee-column">Name</th>
+        <th class="units-column">Units Sold (millions)</th>
+        <th class="revenue-column">Total</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let region of regionInfo">
+      <tr>
+        <th class="region-label">{{ region.regionName }}</th>
+      </tr>
+      <tr
+        *ngFor="
+          let record of region.saleRecords;
+          even as shouldStripe
+        "
+        [class.stripe]="shouldStripe"
+      >
+        <!--
+          If we don't know the class name ahead of time, use [ngClass].
+        -->
+        <td
+          class="employee-name"
+          [class.bonus]="record.rank === 1"
+          [class.fired]="record.rank >= 7"
+          [ngClass]="regionClass(region.regionName)"
+        >
+          {{ record.empName }}
+        </td>
+        <td>
+          <div
+            class="bar"
+            [class.bonus]="record.rank === 1"
+            [class.fired]="record.rank >= 7"
+            [style.width.%]="record.units * unitsScale"
+          ></div>
+        </td>
+        <td>
+          <div
+            class="bar"
+            [class.bonus]="record.rank === 1"
+            [class.fired]="record.rank >= 7"
+            [style.width.%]="record.totalRevenue * revenueScale"
+          ></div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</article>

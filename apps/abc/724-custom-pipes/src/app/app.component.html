@@ -1,0 +1,55 @@
+<article>
+  <header>checkmark Pipe</header>
+  <p>True: {{ true | checkmark }}</p>
+  <p>False: {{ false | checkmark }}</p>
+  <p>Truthy: {{ value12345 | checkmark }}</p>
+  <p>Falsy: {{ valueEmptyString | checkmark }}</p>
+  <p>Truthy: {{ valueHi | checkmark }}</p>
+</article>
+
+<article>
+  <div class="card-title">sentenceCase Pipe; also, chaining</div>
+  <p>{{ 'do it' }}</p>
+  <p>{{ 'do it' | sentenceCase }}</p>
+  <p>{{ 'do it' | sentenceCase | lowercase }}</p>
+  <p>{{ 'do it' | sentenceCase | lowercase | uppercase }}</p>
+  <p>{{ myDate | date | defaultToString | uppercase }}</p>
+</article>
+
+<article>
+  <header>containsX Pipe</header>
+
+  <div>Full list:</div>
+  <ul>
+    <li *ngFor="let item of items">
+      {{ item }}
+    </li>
+  </ul>
+
+  <div>Filtered list:</div>
+  <ul>
+    <!--<li *ngFor="let item of (items | containsX:'abc')"> {{item}}</li>-->
+    <!--<li *ngFor="let item of containsX(items, 'abc')"> {{item}}</li> -->
+    <li *ngFor="let item of items | containsX : 'abc'">
+      {{ item }}
+    </li>
+  </ul>
+</article>
+
+<article>
+  <header>fieldRange Pipe</header>
+
+  <div>Full list:</div>
+  <ul>
+    <li *ngFor="let c of cars">
+      {{ c.year }} {{ c.color }} {{ c.brand }}
+    </li>
+  </ul>
+
+  <div>Filtered list:</div>
+  <ul>
+    <li *ngFor="let c of cars | fieldRange : 'year' : 2009 : 2013">
+      {{ c.year }} {{ c.color }} {{ c.brand }}
+    </li>
+  </ul>
+</article>

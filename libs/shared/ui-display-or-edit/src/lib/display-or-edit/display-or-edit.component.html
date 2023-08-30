@@ -1,0 +1,36 @@
+<mat-form-field *ngIf="editing && control">
+  <input
+    matInput
+    *ngIf="!isTextArea"
+    [formControl]="control"
+    oasisFocusInput
+    (blur)="finishEdit()"
+    (keyup.enter)="finishEdit()"
+  />
+  <textarea
+    matInput
+    *ngIf="isTextArea"
+    [formControl]="control"
+    oasisFocusInput
+    (blur)="finishEdit()"
+    rows="10"
+  ></textarea>
+</mat-form-field>
+<div class="display-container" *ngIf="!editing">
+  <span class="value-display" *ngIf="actionsPosition === 'after'">
+    {{ control?.value }}
+  </span>
+  <button
+    *ngIf="hasDeleteButton"
+    mat-icon-button
+    (click)="deleteClicked.emit()"
+  >
+    <mat-icon>delete</mat-icon>
+  </button>
+  <button mat-icon-button (click)="editing = true">
+    <mat-icon>edit</mat-icon>
+  </button>
+  <span class="value-display" *ngIf="actionsPosition === 'before'">
+    {{ control?.value }}
+  </span>
+</div>

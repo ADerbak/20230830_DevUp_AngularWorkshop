@@ -1,0 +1,28 @@
+<oasis-header
+  title="Precaching"
+  [documents]="[
+    {
+      label: 'Angular PWA Documentation',
+      url: 'https://angular.io/guide/service-worker-getting-started'
+    }
+  ]"
+></oasis-header>
+
+<div class="page-layout">
+  <mat-card *ngIf="instructors | async as instructors">
+    <mat-card-title>
+      {{ instructors[index].employeeName }}
+    </mat-card-title>
+    <img
+      mat-card-image
+      [src]="instructors[index].avatar"
+      [alt]="'Photo of ' + instructors[index].employeeName"
+    />
+    <mat-card-actions>
+      <button mat-raised-button (click)="previous()">previous</button>
+      <button color="primary" mat-raised-button (click)="next()">
+        Next
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

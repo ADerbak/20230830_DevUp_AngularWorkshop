@@ -1,0 +1,6 @@
+{
+  "eslint.validate": [
+    "json"
+  ],
+  "vsicons.presets.angular": true
+}

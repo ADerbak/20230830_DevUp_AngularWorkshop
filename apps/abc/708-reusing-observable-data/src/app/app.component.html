@@ -1,0 +1,12 @@
+<article>
+  <header>Company Data</header>
+
+  <pre>{{ company | async | json }}</pre>
+
+  <button (click)="showAgain = !showAgain">Show company again</button>
+
+  <div *ngIf="showAgain">
+    <pre>{{ company | async | json }}</pre>
+    <p>(without reloading from server)</p>
+  </div>
+</article>

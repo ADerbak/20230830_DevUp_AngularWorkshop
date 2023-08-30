@@ -1,0 +1,16 @@
+<oasis-header
+  title="Online Indicator"
+  [documents]="[
+    {
+      label: 'Angular PWA Documentation',
+      url: 'https://angular.io/guide/service-worker-getting-started'
+    }
+  ]"
+></oasis-header>
+
+<div class="page-layout">
+  <div
+    class="dot"
+    [ngClass]="(online | async) ? 'green' : 'red'"
+  ></div>
+</div>
